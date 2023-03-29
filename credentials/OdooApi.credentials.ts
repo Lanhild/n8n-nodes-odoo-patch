@@ -34,6 +34,7 @@ export class OdooApi implements ICredentialType {
             name: 'db',
             type: 'string',
             default: '',
+            required: true,
         },
     ];
 }

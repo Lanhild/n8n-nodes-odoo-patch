@@ -121,15 +121,15 @@ export class Odoo implements INodeType {
 					const optionField = field as { [key: string]: string };
 					let name = '';
 					try {
-						name = capitalCase(optionField.field);
+						name = capitalCase(optionField.name);
 					} catch (error) {
-						name = optionField.field;
+						name = optionField.name;
 					}
 					return {
 						name,
-						value: optionField.field,
+						value: optionField.name,
 						// nodelinter-ignore-next-line
-						description: `name: ${optionField.field}, type: ${optionField?.type} required: ${optionField?.required}`,
+						description: `name: ${optionField.name}, type: ${optionField?.type} required: ${optionField?.required}`,
 					};
 				});
 
