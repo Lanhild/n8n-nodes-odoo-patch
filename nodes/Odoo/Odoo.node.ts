@@ -31,6 +31,7 @@ import {
 	odooDelete,
 	odooGet,
 	odooGetAll,
+	odooAction,
 	odooGetDBName,
 	odooGetModelFields,
 	odooGetUserID,
@@ -39,6 +40,7 @@ import {
 	processNameValueFields,
 } from './GenericFunctions';
 
+import { capitalCase } from 'change-case';
 export class Odoo implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Odoo',
@@ -100,7 +102,7 @@ export class Odoo implements INodeType {
 
 	methods = {
 		loadOptions: {
-		async getModelFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+			async getModelFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 				let resource;
 				resource = this.getCurrentNodeParameter('resource') as string;
 				if (resource === 'custom') {
@@ -116,7 +118,7 @@ export class Odoo implements INodeType {
 				const userID = await odooGetUserID.call(this, db, username, password, url);
 
 				const responce = await odooGetModelFields.call(this, db, userID, password, resource, url);
-				const options = Object.entries(responce).map(([key, field]) => {
+        		const options = Object.entries(responce).map(([key, field]) => {
 					const optionField = field as { [key: string]: string};
 					try {
 						optionField.name = optionField.string;
@@ -535,7 +537,21 @@ export class Odoo implements INodeType {
 							processNameValueFields(fields),
 						);
 					}
-				}
+					
+					if (operation === 'action') {
+						const customResourceId = this.getNodeParameter('customResourceId', i) as string;
+						const actionName = this.getNodeParameter('actionName', i) as string;
+						responseData = await odooAction.call(
+							this,
+							db,
+							userID,
+							password,
+							customResource,
+							actionName,
+							url,
+							customResourceId,
+						);
+					}
 
 				if (resource === 'note') {
 					if (operation === 'create') {
