@@ -30,6 +30,12 @@ export const customResourceOperations: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Action',
+				value: 'action',
+				description: 'Perform an action',
+				action: 'Perform an action',
+			},
+			{
 				name: 'Create',
 				value: 'create',
 				description: 'Create a new item',
@@ -58,12 +64,6 @@ export const customResourceOperations: INodeProperties[] = [
 				value: 'update',
 				description: 'Update an item',
 				action: 'Update an item',
-			},
-			{
-				name: 'Action',
-				value: 'action',
-				description: 'Perform an action',
-				action: 'Perform an action',
 			},
 		],
 	},

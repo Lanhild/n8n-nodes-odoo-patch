@@ -1,12 +1,11 @@
 {
 	"name": "@lanhild/n8n-nodes-odoo-patch",
-	"version": "0.4.2",
+	"version": "1.0.0",
 	"description": "A node consuming the Odoo API.",
 	"keywords": [
 		"n8n",
 		"workflow",
 		"n8n-community-node-package",
-		"digital boss",
 		"odoo"
 	],
 	"license": "MIT",
@@ -26,6 +25,7 @@
 		"format": "prettier nodes credentials --write",
 		"lint": "eslint nodes credentials package.json",
 		"lintfix": "eslint nodes credentials package.json --fix",
+		"release": "npm run build && npm publish --access=public",
 		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
 	},
 	"files": [
