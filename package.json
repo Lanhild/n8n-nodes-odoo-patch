@@ -1,5 +1,5 @@
 {
-	"name": "@lanhild/n8n-nodes-odoo-patch",
+	"name": "n8n-nodes-odoo-patch",
 	"version": "1.0.1",
 	"description": "A node consuming the Odoo API.",
 	"keywords": [
