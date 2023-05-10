@@ -35,7 +35,7 @@ npm link
 
 ```bash
 cd .. && mkdir -p n8n_install && cd n8n_install && \
-npm link @lanhild/n8n-nodes-odoo-patch
+npm link n8n-nodes-odoo-patch
 ```
 
 1. Start your instance
